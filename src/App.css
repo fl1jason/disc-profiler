@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  /* Removes default styling in Chrome/Safari */
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  /* fallback background */
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Chrome, Safari, Opera */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ee4f48;
+  /* Thumb color */
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 2px #000;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ee4f48;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+
+/* Track color for Firefox */
+input[type="range"]::-moz-range-track {
+  background: #ddd;
+  height: 6px;
+  border-radius: 5px;
+}
+
+/* Track color for Chrome/Safari */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #ddd;
+  height: 6px;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9fc;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.questionnaire-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2d3748;
+}
+
+.questionnaire-scaleKey {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.98rem;
+  color: #444;
+  align-items: center;
+}
+
+.questionnaire-scaleKey strong {
+  margin-right: 0.5rem;
+}
+
+.questionnaire-question {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.questionnaire-rangeInput {
+  width: 60%;
+  margin: 0.5rem 0;
+}
+
+.questionnaire-responseValue {
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.questionnaire-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: #ee4f48;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.questionnaire-button:disabled {
+  background: #d5daea;
+  cursor: not-allowed;
+}
+
+.questionnaire-results {
+  margin: 2rem auto;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
