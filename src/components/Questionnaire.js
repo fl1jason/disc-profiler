@@ -50,8 +50,9 @@ function Questionnaire({ setResult }) {
       .join(
         "\n"
       )}\n\nPlease provide a clear, concise assessment including a description of the personality profile, dominant DISC type(s), and how this might affect their communication and teamwork style.
+      neatly format the text responses with paragraph and sentence breaks so it can be easily rendered and understood.
 
-      additionally, provide a JSON format result suitable to produce a pie chart in chartJS showing the proportions of each DISC type. Use the following colors for the chart: D - Red, I - Yellow, S - Green, C - Blue.`;
+      additionally, provide a JSON format result suitable to produce a pie chart in chartJS showing the proportions of each DISC type. Use the following colors for the chart: D - Red, I - Yellow, S - Green, C - Blue. supply the data between triple backticks`;
 
     try {
       const res = await axios.post(
