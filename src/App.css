@@ -129,3 +129,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   padding: 2rem;
   font-family: 'Montserrat', sans-serif;
 }
+
+p {
+  padding: 1rem 0;
+  line-height: 1.6;
+  color: #333;
+}

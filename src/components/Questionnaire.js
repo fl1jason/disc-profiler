@@ -45,14 +45,13 @@ function Questionnaire({ setResult }) {
   const handleSubmit = async () => {
     setLoading(true);
 
-    const prompt = `I've responded to a DISC personality questionnaire. For each of the following 24 statements, I've provided a score from 1 (Strongly Disagree) to 5 (Strongly Agree). Based on these, assess my DISC profile and identify my dominant trait(s). Include a brief summary of my behavior in teams and work environments.\n\n${questions
-      .map((q, i) => `${i + 1}. ${q} — ${responses[i]}`)
-      .join(
-        "\n"
-      )}\n\nPlease provide a clear, concise assessment including a description of the personality profile, dominant DISC type(s), and how this might affect their communication and teamwork style.
-      neatly format the text responses with paragraph and sentence breaks so it can be easily rendered and understood.
+    const prompt = `I've responded to a DISC personality questionnaire. For each of the following 24 statements, I've provided a score from 1 (Strongly Disagree) to 5 (Strongly Agree). Based on these, assess my DISC profile and identify my dominant trait(s). Include a brief summary of my behavior in teams and work environments.
 
-      additionally, provide a JSON format result suitable to produce a pie chart in chartJS showing the proportions of each DISC type. Use the following colors for the chart: D - Red, I - Yellow, S - Green, C - Blue. supply the data between triple backticks`;
+${questions.map((q, i) => `${i + 1}. ${q} — ${responses[i]}`).join("\n")}
+
+Please provide:
+1. A clear, concise assessment including a description of the personality profile, dominant DISC type(s), and how this might affect their communication and teamwork style. Neatly format the text responses with paragraph and sentence breaks so it can be easily rendered as HTML using <p> and <br /> tags.
+2. ChartJS pie chart data in valid JSON format, enclosed within triple backticks and starting with \`\`\`json (for example: \`\`\`json { ... } \`\`\`). The JSON should include proportions for each DISC type and use these colors: D - Red, I - Yellow, S - Green, C - Blue. Do not include any markdown or explanation outside the code block. Only the JSON block should be inside the triple backticks.`;
 
     try {
       const res = await axios.post(
@@ -71,9 +70,10 @@ function Questionnaire({ setResult }) {
       );
 
       const message = res.data.choices[0].message.content;
+      console.log("OpenAI Response:", message);
 
-      // Extract JSON between triple backticks
-      const jsonMatch = message.match(/```([\s\S]*?)```/);
+      // Extract JSON between triple backticks or triple backticks with 'json'
+      const jsonMatch = message.match(/```(?:json)?([\s\S]*?)```/);
       let chartData = null;
       if (jsonMatch) {
         try {

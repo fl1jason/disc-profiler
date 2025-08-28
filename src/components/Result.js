@@ -14,7 +14,10 @@ function Result({ result }) {
   return (
     <div className="questionnaire-results">
       <h3 className="questionnaire-heading">Your DISC Assessment</h3>
-      <div className="questionnaire-resultsContent">{displayText}</div>
+      <div
+        className="questionnaire-resultsContent"
+        dangerouslySetInnerHTML={{ __html: displayText }}
+      />
       {chartData && (
         <div style={{ maxWidth: 400, margin: "2rem auto" }}>
           <Pie data={chartData} />
